@@ -4,12 +4,36 @@ import { getPokemonDetailsApi } from '../api/pokemon'
 import Header from '../components/pokemon/Header'
 import Type from '../components/pokemon/Type'
 import Stats from '../components/pokemon/Stats'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export default function Pokemon(props) {
 
   const { navigation, route: { params } } = props;
   const [pokemon, setPokemon] = useState(null);
   //console.log(params.id);
+
+  useEffect(()=>{
+    navigation.setOptions({
+      headerRight: () => (
+        <Icon 
+          name='heart' 
+          color='#fff' 
+          size={20} 
+          style={{ marginRight: 15}} 
+          onPress={() => console.log('Marcar como favorito')}
+        />
+      ),
+      headerLeft: () => (
+        <Icon 
+          name='arrow-left' 
+          color='#fff' 
+          size={20} 
+          style={{ marginRight: 15}} 
+          onPress={navigation.goBack}
+        />
+      ),
+    });
+  }, [navigation, params]); //Cambia cada vez que cambie la navegacion o los parametros
 
   useEffect(()=>{
     (async ()=>{

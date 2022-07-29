@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         textTransform: 'capitalize',
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
     },
     order: {
         color: '#fff',
