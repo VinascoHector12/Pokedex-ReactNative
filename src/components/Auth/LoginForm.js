@@ -3,10 +3,14 @@ import { useState } from 'react'
 import { useFormik } from 'formik' //Manejo de formularios
 import * as Yup from 'yup' //Manejo de validaciones
 import { user, userDetails } from '../../utils/userDB'
+import useAuth from '../../hooks/useAuth'
 
 export default function LoginForm() {
 
     const [error, setError] = useState('');
+    const { logIn } = useAuth();
+
+    //console.log(useAuth()); //Un hook no se puede utilizar dentro de otro hook
 
     const formik = useFormik({
         initialValues: initialValues(),
@@ -19,6 +23,7 @@ export default function LoginForm() {
             if(username !== user.username || password !== user.password) {
                 setError('El usuario o la contraseña no son correctos');
             }else{
+                logIn(userDetails);
                 console.log('LogIn correcto');
                 console.log(userDetails);
             }
@@ -43,11 +48,14 @@ export default function LoginForm() {
                 value = {formik.values.password}
                 onChangeText={(text) => formik.setFieldValue('password', text)}
             />
-            <Button 
-                style={styles.button}
-                title='Entrar'
-                onPress={formik.handleSubmit}
-            />
+            <View style={styles.buttonContainer}>
+                <Button 
+                    style={styles.button}
+                    title='Entrar'
+                    onPress={formik.handleSubmit}
+                />
+            </View>
+            
 
             <Text style={styles.error}>{formik.errors.username}</Text>
             <Text style={styles.error}>{formik.errors.password}</Text>
@@ -87,6 +95,11 @@ const styles = StyleSheet.create({
     },
     button: {
         margin: 12
+    },
+    buttonContainer: {
+        height: 40,
+        margin: 12,
+        borderRadius: 50
     },
     error: {
         textAlign: 'center',
