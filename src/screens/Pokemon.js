@@ -1,9 +1,9 @@
 import { ScrollView } from 'react-native'
 import { useState, useEffect } from 'react'
 import { getPokemonDetailsApi } from '../api/pokemon'
-import Header from '../components/pokemon/Header'
-import Type from '../components/pokemon/Type'
-import Stats from '../components/pokemon/Stats'
+import Header from '../components/Pokemon/Header'
+import Type from '../components/Pokemon/Type'
+import Stats from '../components/Pokemon/Stats'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export default function Pokemon(props) {
