@@ -35,14 +35,15 @@ const styles = StyleSheet.create({
         transform: [{ scaleX: 2}]
     },
     content: {
-        marginHorizontal: 20,
-        marginTop: 30
+        //marginHorizontal: 10,
+        marginTop: 40
     },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 40
+        paddingTop: 40,
+        paddingHorizontal: 20
     },
     name: {
         textTransform: 'capitalize',
