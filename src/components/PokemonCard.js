@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     },
     spacing: {
         flex: 1,
-        padding: 5
+        padding: 5,
+        //width: 190
     },
     image: {
         position: 'absolute',
